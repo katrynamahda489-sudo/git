@@ -1,0 +1,116 @@
+ html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Фон */
+body {
+    background-image: url("fon.jpg");
+    background-size: cover;        /* заполняет экран */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* красиво на ПК */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Карточка */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 500px;   /* максимальный размер на ПК */
+}
+
+/* Картинка */
+.image-1 img {
+    width: 100%;
+    max-width: 466px;   /* одинаковый размер */
+    height: auto;
+    display: block;
+}
+
+/* Текст */
+.text {
+    font-size: clamp(18px, 4vw, 24px); /* адаптивный размер текста */
+    color: #A62934;
+    text-align: center;
+}
+
+/* Кнопки контейнер */
+.button {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;  /* если экран маленький — кнопки в столбик */
+    width: 100%;
+}
+
+/* Кнопки */
+.but {
+    background-color: #A62934;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: clamp(16px, 3vw, 22px);
+    text-decoration: none;
+    text-align: center;
+    
+    flex: 1;              /* растягиваются одинаково */
+    max-width: 200px;
+    min-width: 120px;
+    transition: 0.3s;
+}
+
+.but:hover {
+    background-color: #F29494;
+    transform: scale(1.05);
+}
+
+/* Сердечки */
+#heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    opacity: 0.8;
+    animation: moveUp 4s linear infinite;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Дополнительная адаптация для маленьких экранов */
+@media (max-width: 600px) {
+    body {
+        background-attachment: scroll; /* лучше для мобильных */
+    }
+
+    .button {
+        flex-direction: column;
+        align-items: center;
+    }
+}
